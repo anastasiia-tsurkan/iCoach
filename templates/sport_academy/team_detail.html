@@ -9,10 +9,12 @@
     <table>
       <tr>
         <th>Full name</th>
+        <th>Position</th>
       </tr>
       {% for coach in team.coaches.all %}
         <tr>
           <td>{{ coach.first_name }} {{ coach.last_name }}</td>
+          <td>{{ coach.position }}</td>
         </tr>
       {% endfor %}
     </table>

@@ -7,6 +7,11 @@ from sport_academy.views import (
     TeamCreateView,
     TeamUpdateView,
     TeamDeleteView,
+    PlayersListView,
+    PlayerDetailView,
+    PlayerCreateView,
+    PlayerUpdateView,
+    PlayerDeleteView,
 )
 
 urlpatterns = [
@@ -16,7 +21,11 @@ urlpatterns = [
     path("team/<int:pk>/", TeamDetailView.as_view(), name="team-detail"),
     path("team/<int:pk>/update/", TeamUpdateView.as_view(), name="team-update"),
     path("team/<int:pk>/delete/", TeamDeleteView.as_view(), name="team-delete"),
-
+    path("players/", PlayersListView.as_view(), name="players-list"),
+    path("player/<int:pk>/", PlayerDetailView.as_view(), name="player-detail"),
+    path("player/create/", PlayerCreateView.as_view(), name="player-create"),
+    path("player/<int:pk>/update/", PlayerUpdateView.as_view(), name="player-update"),
+    path("player/<int:pk>/delete/", PlayerDeleteView.as_view(), name="player-delete"),
 
 ]
 app_name = "sport_academy"

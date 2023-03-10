@@ -8,7 +8,7 @@ from sport_academy.models import Club, Coach, Player, Team
 def index(request):
     """View function for the home page of the site"""
     num_teams = Team.objects.count()
-    num_coaches = Coach.objects.count()
+    num_coaches = Coach.objects.count() - 1
     num_players = Player.objects.count()
 
     context = {
@@ -54,6 +54,35 @@ class TeamUpdateView(generic.UpdateView):
 class TeamDeleteView(generic.DeleteView):
     model = Team
     success_url = reverse_lazy("sport_academy:teams-list")
+
+
+class PlayersListView(generic.ListView):
+    model = Player
+    context_object_name = "players_list"
+    template_name = "sport_academy/players_list.html"
+    paginate_by = 10
+    queryset = Player.objects.all()
+
+
+class PlayerDetailView(generic.DetailView):
+    model = Player
+
+
+class PlayerCreateView(generic.CreateView):
+    model = Player
+    fields = "__all__"
+    success_url = reverse_lazy("sport_academy:players-list")
+
+
+class PlayerUpdateView(generic.UpdateView):
+    model = Player
+    fields = "__all__"
+    success_url = reverse_lazy("sport_academy:players-list")
+
+
+class PlayerDeleteView(generic.DeleteView):
+    model = Player
+    success_url = reverse_lazy("sport_academy:players-list")
 
 
 
