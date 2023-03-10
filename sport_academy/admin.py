@@ -9,7 +9,7 @@ class CoachAdmin(UserAdmin):
     pass
     list_display = UserAdmin.list_display
     fieldsets = UserAdmin.fieldsets + (
-        (("Additional info", {"fields": ("team",)}),)
+        (("Additional info", {"fields": ("team", "position")}),)
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
@@ -19,7 +19,8 @@ class CoachAdmin(UserAdmin):
                     "fields": (
                         "first_name",
                         "last_name",
-                        "team"
+                        "team",
+                        "position"
                     )
                 }
             )

@@ -34,6 +34,7 @@ class Coach(AbstractUser):
     team = models.ManyToManyField(
         Team,
         related_name="coaches",
+        blank=True
     )
     position = models.CharField(max_length=67, null=True)
 

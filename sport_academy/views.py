@@ -35,6 +35,9 @@ class TeamListView(generic.ListView):
     #     return Team.objects.get(id=team_id).count()
 
 
+"""Player views"""
+
+
 class TeamCreateView(generic.CreateView):
     model = Team
     fields = "__all__"
@@ -54,6 +57,9 @@ class TeamUpdateView(generic.UpdateView):
 class TeamDeleteView(generic.DeleteView):
     model = Team
     success_url = reverse_lazy("sport_academy:teams-list")
+
+
+"""Player views"""
 
 
 class PlayersListView(generic.ListView):
@@ -85,7 +91,19 @@ class PlayerDeleteView(generic.DeleteView):
     success_url = reverse_lazy("sport_academy:players-list")
 
 
+"""Coach views"""
 
 
+class CoachListView(generic.ListView):
+    model = Coach
+    context_object_name = "coaches_list"
+    template_name = "sport_academy/coaches_list.html"
+    paginate_by = 5
+    queryset = Coach.objects.all()
 
 
+class CoachDetailView(generic.DetailView):
+    model = Coach
+
+
+"""Club views"""

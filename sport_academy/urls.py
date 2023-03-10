@@ -12,6 +12,8 @@ from sport_academy.views import (
     PlayerCreateView,
     PlayerUpdateView,
     PlayerDeleteView,
+    CoachListView,
+    CoachDetailView,
 )
 
 urlpatterns = [
@@ -26,6 +28,9 @@ urlpatterns = [
     path("player/create/", PlayerCreateView.as_view(), name="player-create"),
     path("player/<int:pk>/update/", PlayerUpdateView.as_view(), name="player-update"),
     path("player/<int:pk>/delete/", PlayerDeleteView.as_view(), name="player-delete"),
+    path("coaches/", CoachListView.as_view(), name="coaches-list"),
+    path("coach/<int:pk>/", CoachDetailView.as_view(), name="coach-detail"),
+
 
 ]
 app_name = "sport_academy"
