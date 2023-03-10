@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ team.club.name }} {{ team.name }} team</h1>
+  <a href="{% url 'sport_academy:team-update' pk=team.id %}">Update</a>
+  <a href="{% url 'sport_academy:team-delete' pk=team.id %}">Delete</a>
+
+  <p>Coaches:
+    <table>
+      <tr>
+        <th>Full name</th>
+        <th>Position</th>
+      </tr>
+      {% for coach in team.coaches.all %}
+        <tr>
+          <td>{{ coach.first_name }} {{ coach.last_name }}</td>
+          <td>{{ coach.position }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  <p>Status: {{ team.status }}</p>
+  <p>League: {{ team.league }}</p>
+  <p>Season: {{ team.season }}</p>
+  <p>Number of players: </p>
+{% endblock %}
