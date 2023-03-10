@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from sport_academy.models import Club, Coach, Player, Team
@@ -30,6 +31,13 @@ class TeamListView(generic.ListView):
     paginate_by = 5
     queryset = Team.objects.all()
 
+    # def count_number_of_players_in_the_team(self, team_id: int):
+    #     return Team.objects.get(id=team_id).count()
 
+
+class TeamCreateView(generic.CreateView):
+    model = Team
+    fields = "__all__"
+    success_url = reverse_lazy("sport_academy:teams-list")
 
 

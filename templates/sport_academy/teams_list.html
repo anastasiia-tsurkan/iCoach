@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Teams</h1>
+  <h1>
+    Teams
+    <a href="{% url 'sport_academy:team-create' %}">Add new</a>
+  </h1>
    {% if teams_list %}
       <table class="table">
         <tr>
