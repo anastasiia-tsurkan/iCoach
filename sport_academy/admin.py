@@ -7,7 +7,7 @@ from .models import Coach, Team, Player, Position, Club
 @admin.register(Coach)
 class CoachAdmin(UserAdmin):
     pass
-    list_display = UserAdmin.list_display
+    list_display = UserAdmin.list_display + ("position",)
     fieldsets = UserAdmin.fieldsets + (
         (("Additional info", {"fields": ("team", "position")}),)
     )

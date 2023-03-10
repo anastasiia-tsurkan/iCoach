@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ coach.first_name }} {{ coach.last_name }}</h1>
+  <h1>{{ club.name }} {{ club.city }}</h1>
 
-  <p>Position: {{ coach.position }}</p>
+  <p>Main stadium: {{ club.main_stadium }}</p>
   <p>Teams:</p>
-  {% for team in coach.team.all %}
+  {% for team in club.teams.all %}
     <p>{{ team.name }} team</p>
   {% endfor %}
 

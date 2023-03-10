@@ -107,3 +107,14 @@ class CoachDetailView(generic.DetailView):
 
 
 """Club views"""
+
+
+class ClubListView(generic.ListView):
+    model = Club
+    context_object_name = "clubs_list"
+    template_name = "sport_academy/clubs_list.html"
+    queryset = Club.objects.all()
+
+
+class ClubDetailView(generic.DetailView):
+    model = Club

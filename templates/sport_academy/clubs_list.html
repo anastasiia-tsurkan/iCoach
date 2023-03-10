@@ -2,34 +2,29 @@
 
 {% block content %}
   <h1>
-    Coaches
+    Sport clubs
   </h1>
-   {% if coaches_list %}
+   {% if clubs_list %}
       <table class="table">
         <tr>
           <th>Id</th>
-          <th>Full Name</th>
-          <th>Position</th>
-          <th>Team</th>
+          <th>Name</th>
+          <th>Place</th>
+          <th>Stadium</th>
         </tr>
-        {% for coach in coaches_list %}
+        {% for club in clubs_list %}
           <tr>
             <td>
-              {{ coach.id }}
+              {{ club.id }}
             </td>
             <td>
-              <a href="{% url 'sport_academy:coach-detail' pk=coach.id %}">{{ coach.first_name }} {{ coach.last_name }}</a>
+              <a href="{% url 'sport_academy:club-detail' pk=club.id %}">{{ club.name }}</a>
             </td>
             <td>
-              {{ coach.position }}
+              {{ club.city }}, {{ club.country }}
             </td>
             <td>
-              <ul>
-                {% for team in coach.team.all %}
-                  <li>{{ team.name }} team</li>
-                {% endfor %}
-              </ul>
-
+              {{ club.main_stadium }}
             </td>
           </tr>
 

@@ -14,6 +14,8 @@ from sport_academy.views import (
     PlayerDeleteView,
     CoachListView,
     CoachDetailView,
+    ClubListView,
+    ClubDetailView,
 )
 
 urlpatterns = [
@@ -30,6 +32,8 @@ urlpatterns = [
     path("player/<int:pk>/delete/", PlayerDeleteView.as_view(), name="player-delete"),
     path("coaches/", CoachListView.as_view(), name="coaches-list"),
     path("coach/<int:pk>/", CoachDetailView.as_view(), name="coach-detail"),
+    path("clubs/", ClubListView.as_view(), name="clubs-list"),
+    path("club/<int:pk>/", ClubDetailView.as_view(), name="club-detail"),
 
 
 ]
