@@ -33,8 +33,9 @@ class Team(models.Model):
 class Coach(AbstractUser):
     team = models.ManyToManyField(
         Team,
-        related_name="teams",
+        related_name="coaches",
     )
+    position = models.CharField(max_length=67, null=True)
 
     class Meta:
         verbose_name = "coach"

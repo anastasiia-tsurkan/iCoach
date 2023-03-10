@@ -41,3 +41,22 @@ class TeamCreateView(generic.CreateView):
     success_url = reverse_lazy("sport_academy:teams-list")
 
 
+class TeamDetailView(generic.DetailView):
+    model = Team
+
+
+class TeamUpdateView(generic.UpdateView):
+    model = Team
+    fields = "__all__"
+    success_url = reverse_lazy("sport_academy:teams-list")
+
+
+class TeamDeleteView(generic.DeleteView):
+    model = Team
+    success_url = reverse_lazy("sport_academy:teams-list")
+
+
+
+
+
+

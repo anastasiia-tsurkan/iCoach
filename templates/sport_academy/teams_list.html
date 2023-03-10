@@ -24,7 +24,7 @@
               <a href="">{{ team.club.name }}</a>
             </td>
             <td>
-              <a href="">{{ team.name }}</a>
+              <a href="{% url 'sport_academy:team-detail' pk=team.id %}">{{ team.name }}</a>
             </td>
             <td>
               {{ team.season }}
