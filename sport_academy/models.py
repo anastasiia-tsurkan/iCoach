@@ -33,10 +33,11 @@ class Team(models.Model):
 class Coach(AbstractUser):
     team = models.ManyToManyField(
         Team,
-        related_name="coaches",
+        related_name="teams",
         blank=True
     )
     position = models.CharField(max_length=67, null=True)
+    picture_url = models.CharField(max_length=255, default="/images/coaches/avatar.png")
 
     class Meta:
         verbose_name = "coach"
@@ -69,6 +70,7 @@ class Player(models.Model):
         on_delete=models.CASCADE,
         related_name="players"
     )
+    picture_url = models.CharField(max_length=255, default="/images/players/avatar.png")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.position.position_name})"

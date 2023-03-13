@@ -164,7 +164,8 @@ strong {
   display: inline-block;
   position: relative;
   z-index: 2;
-  margin-bottom: 0;
+  margin-bottom: 0px;
+  margin-top: 0px;
   padding: 10px 25px;
 }
 
@@ -493,7 +494,7 @@ main {
 .owl-carousel .owl-item .owl-carousel-verified-image {
   display: inline-block;
   width: 30px;
-  height: auto;
+  height: 100px;
   position: relative;
   right: 5px;
 }
@@ -514,7 +515,7 @@ main {
 
 .owl-carousel-info-wrap {
   border-radius: var(--border-radius-medium);
-  position: relative;
+  position: static;
   overflow: hidden;
   text-align: left;
 }
@@ -522,11 +523,11 @@ main {
 .owl-carousel-info {
   background-color: var(--section-bg-color);
   box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
-  position: absolute;
+  position: static;
   bottom: 0;
   right: 0;
   left: 0;
-  padding: 30px;
+  padding: 20px;
 }
 
 .badge {

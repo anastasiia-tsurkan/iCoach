@@ -29,7 +29,7 @@ class TeamListView(generic.ListView):
     context_object_name = "teams_list"
     template_name = "sport_academy/teams_list.html"
     paginate_by = 5
-    queryset = Team.objects.all()
+    queryset = Team.objects.select_related("club")
 
     # def count_number_of_players_in_the_team(self, team_id: int):
     #     return Team.objects.get(id=team_id).count()
@@ -66,8 +66,8 @@ class PlayersListView(generic.ListView):
     model = Player
     context_object_name = "players_list"
     template_name = "sport_academy/players_list.html"
-    paginate_by = 10
-    queryset = Player.objects.all()
+    paginate_by = 6
+    queryset = Player.objects.select_related("team")
 
 
 class PlayerDetailView(generic.DetailView):
@@ -99,7 +99,7 @@ class CoachListView(generic.ListView):
     context_object_name = "coaches_list"
     template_name = "sport_academy/coaches_list.html"
     paginate_by = 5
-    queryset = Coach.objects.all()
+    queryset = Coach.objects.prefetch_related("team")
 
 
 class CoachDetailView(generic.DetailView):
