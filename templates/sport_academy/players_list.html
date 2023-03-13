@@ -1,42 +1,65 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <h1>
-    Players
-    <a href="{% url 'sport_academy:player-create' %}">Add new</a>
-  </h1>
-   {% if players_list %}
-      <table class="table">
-        <tr>
-          <th>Id</th>
-          <th>Full Name</th>
-          <th>Birth date</th>
-          <th>Position</th>
-          <th>Nationality</th>
-        </tr>
-        {% for player in players_list %}
-          <tr>
-            <td>
-              {{ player.id }}
-            </td>
-            <td>
-              <a href="{% url 'sport_academy:player-detail' pk=player.id %}">{{ player.first_name }} {{ player.last_name }}</a>
-            </td>
-            <td>
-              {{ player.birth_date}}
-            </td>
-            <td>
-              {{ player.position }}
-            </td>
-            <td>
-              {{ player.nationality }}
-            </td>
-          </tr>
+  <section class="latest-podcast-section section-padding" id="section_2">
+    <div class="container">
+      <div class="row justify-content-center">
 
-        {% endfor %}
+        <div class="col-lg-12 col-12">
+          <div class="section-title-wrap mb-5">
+            <h4 class="section-title">Players</h4>
+          </div>
+          <div class="mb-5">
+            <h4 class="section-title" style="float: right">
+              <a href="{% url 'sport_academy:player-create' %}">Add player</a>
+            </h4>
+          </div>
+        </div>
+        {% if players_list %}
+          {% for player in players_list %}
+            <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+              <div class="custom-block d-flex">
+                <div class="">
+                  <div class="custom-block-icon-wrap">
 
-      </table>
-   {% else %}
-     <p>There are no registered players yet</p>
-   {% endif %}
+                    <div class="section-overlay"></div>
+                    <a href="{% url 'sport_academy:player-detail' pk=player.id %}" class="custom-block-image-wrap">
+                      <img src="{% static 'images/players/avatar.png' %}"
+                        class="custom-block-image img-fluid" alt="">
+                    </a>
+                  </div>
+                </div>
+
+                <div class="custom-block-info">
+                  <div class="custom-block-top d-flex mb-1">
+                    <small class="me-4">
+                      Age {{ "" }}
+                    </small>
+
+                    <small>Number <span class="badge">{{ player.number }}</span></small>
+                  </div>
+
+                  <h5 class="mb-2">
+                      <a href="{% url 'sport_academy:player-detail' pk=player.id %}">
+                        {{ player.first_name}} {{ player.last_name }}
+                      </a>
+                  </h5>
+
+                  <p class="mb-0"><strong>{{ player.position }}</strong></p>
+
+                  <div class="custom-block-bottom d-flex justify-content-between mt-3">
+
+                    <a href="#" class="bi-heart me-1">
+                      <span>{{ player.nationality }}</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
 {% endblock %}

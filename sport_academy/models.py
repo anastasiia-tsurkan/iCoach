@@ -57,6 +57,7 @@ class Player(models.Model):
     first_name = models.CharField(max_length=67)
     last_name = models.CharField(max_length=67)
     birth_date = models.DateField(max_length=67)
+    number = models.IntegerField()
     position = models.ForeignKey(
         Position,
         on_delete=models.CASCADE,

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+
   <h1>{{ player.first_name }} {{ player.last_name }}</h1>
   <a href="{% url 'sport_academy:player-update' pk=player.id %}">Update</a>
   <a href="{% url 'sport_academy:player-delete' pk=player.id %}">Delete</a>
