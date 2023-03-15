@@ -1,10 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    Teams
-    <a href="{% url 'sport_academy:team-create' %}">Add new</a>
-  </h1>
+  <header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-12 col-12 text-center">
+
+          <h2 class="mb-0">Teams</h2>
+        </div>
+
+      </div>
+    </div>
+  </header>
+  <div class="col-lg-12 col-12">
+    <div class="section-title-wrap mb-5">
+      <h4 class="section-title">
+        <a href="{% url 'sport_academy:team-create' %}">Add team</a>
+      </h4>
+    </div>
+  </div>
    {% if teams_list %}
       <table class="table">
         <tr>
@@ -33,7 +48,7 @@
               {{ team.league }}
             </td>
             <td>
-              {{ "" }}
+              {{ team.num_of_players }}
             </td>
           </tr>
 

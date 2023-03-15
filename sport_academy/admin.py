@@ -6,10 +6,21 @@ from .models import Coach, Team, Player, Position, Club
 
 @admin.register(Coach)
 class CoachAdmin(UserAdmin):
-    pass
     list_display = UserAdmin.list_display + ("position",)
     fieldsets = UserAdmin.fieldsets + (
-        (("Additional info", {"fields": ("team", "position")}),)
+        (
+            (
+                "Additional info",
+                {
+                    "fields": (
+                        "team",
+                        "position",
+                        "birth_date",
+                        "picture_url"
+                    )
+                },
+            ),
+        )
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
@@ -20,10 +31,11 @@ class CoachAdmin(UserAdmin):
                         "first_name",
                         "last_name",
                         "team",
-                        "position"
+                        "position",
+                        "birth_date"
                     )
                 }
-            )
+            ),
         )
     )
 

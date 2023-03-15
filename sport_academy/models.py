@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -29,15 +31,20 @@ class Team(models.Model):
     def __str__(self):
         return f"{self.club.name} {self.name} team"
 
+    @property
+    def num_of_players(self):
+        return self.players.count()
+
 
 class Coach(AbstractUser):
     team = models.ManyToManyField(
         Team,
-        related_name="teams",
-        blank=True
+        blank=True,
+        related_name="teams"
     )
     position = models.CharField(max_length=67, null=True)
     picture_url = models.CharField(max_length=255, default="/images/coaches/avatar.png")
+    birth_date = models.DateField(default=date(1980, 1, 1))
 
     class Meta:
         verbose_name = "coach"
@@ -45,6 +52,14 @@ class Coach(AbstractUser):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+    @property
+    def age(self):
+        today = date.today()
+        age = today.year - self.birth_date.year - (
+                (today.month, today.day) < (self.birth_date.month, self.birth_date.day)
+        )
+        return age
 
 
 class Position(models.Model):
@@ -57,7 +72,7 @@ class Position(models.Model):
 class Player(models.Model):
     first_name = models.CharField(max_length=67)
     last_name = models.CharField(max_length=67)
-    birth_date = models.DateField(max_length=67)
+    birth_date = models.DateField()
     number = models.IntegerField()
     position = models.ForeignKey(
         Position,
@@ -74,3 +89,11 @@ class Player(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.position.position_name})"
+
+    @property
+    def age(self):
+        today = date.today()
+        age = today.year - self.birth_date.year - (
+                (today.month, today.day) < (self.birth_date.month, self.birth_date.day)
+        )
+        return age

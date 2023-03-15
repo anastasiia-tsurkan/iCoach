@@ -20,85 +20,57 @@
 
         {% if coaches_list %}
           {% for coach in coaches_list %}
-            <div class="col-lg-6 col-12 mb-4 mb-lg-0">
-              <div class="custom-block d-flex">
-                <div class="">
-                  <div class="custom-block-icon-wrap">
+            {% if coach.id > 1 %}
+              <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                <div class="custom-block d-flex">
+                  <div class="">
+                    <div class="custom-block-icon-wrap">
 
-                    <div class="section-overlay"></div>
-                    <a href="{% url 'sport_academy:coach-detail' pk=coach.id %}" class="custom-block-image-wrap">
-                      <img src="{% static coach.picture_url  %}"
-                        class="custom-block-image img-fluid" alt="">
-                    </a>
-                  </div>
-                </div>
-
-                <div class="custom-block-info">
-                  <div class="custom-block-top d-flex mb-1">
-                    <small class="me-4">
-                      Age {{ "" }}
-                    </small>
-
-                    <small>Number <span class="badge">100</span></small>
+                      <div class="section-overlay"></div>
+                      <a href="{% url 'sport_academy:coach-detail' pk=coach.id %}" class="custom-block-image-wrap">
+                        <img src="{% static coach.picture_url  %}"
+                          class="custom-block-image img-fluid" alt="">
+                      </a>
+                    </div>
                   </div>
 
-                  <h5 class="mb-2">
-                      <a href="{% url 'sport_academy:coach-detail' pk=coach.id %}">
-                        {{ coach.first_name}} {{ coach.last_name }}
-                      </a>
-                  </h5>
+                  <div class="custom-block-info">
+                    <div class="custom-block-top d-flex mb-1">
+                      <small class="me-4">
+                        Age {{ coach.age }}
+                      </small>
 
-                  <p class="mb-0"><strong>{{ coach.position }}</strong></p>
+                    </div>
 
-                  <div class="custom-block-bottom d-flex justify-content-between mt-3">
-                    {% for team in coach.teams.all %}
-                      <a href="#" class="bi-heart me-1/">
-                        <span>{{ team.name }} team</span>
-                      </a>
-                    {% endfor %}
+                    <h5 class="mb-2">
+                        <a href="{% url 'sport_academy:coach-detail' pk=coach.id %}">
+                          {{ coach.first_name}} {{ coach.last_name }}
+                        </a>
+                    </h5>
+
+                    <p class="mb-0"><strong>{{ coach.position }}</strong></p>
+
+                    <div class="custom-block-bottom d-flex justify-content-between mt-3">
+                      {% if coach.team.all %}
+                        {% for team_ in coach.team.all %}
+                          <a href="#" class="me-1">
+                            <span>{{ team_ }}</span>
+                          </a>
+                        {% endfor %}
+                        {% else %}
+                          <span class="me-1"> </span>
+                      {% endif %}
+                    </div>
+
                   </div>
                 </div>
               </div>
-            </div>
+            {% endif %}
+
           {% endfor %}
         {% endif %}
       </div>
     </div>
   </section>
-  <h1>
-    Coaches
-  </h1>
-   {% if coaches_list %}
-      <table class="table">
-        <tr>
-          <th>Id</th>
-          <th>Full Name</th>
-          <th>Position</th>
-          <th>Team</th>
-        </tr>
-        {% for coach in coaches_list %}
-          <tr>
-            <td>
-              {{ coach.id }}
-            </td>
-            <td>
-              <a href="{% url 'sport_academy:coach-detail' pk=coach.id %}">{{ coach.first_name }} {{ coach.last_name }}</a>
-            </td>
-            <td>
-              {{ coach.position }}
-            </td>
-            <td>
-              <ul>
-                {% for team in coach.team.all %}
-                  <li>{{ team.name }} team</li>
-                {% endfor %}
-              </ul>
 
-            </td>
-          </tr>
-
-        {% endfor %}
-
-      </table>
-   {% endif %}
 {% endblock %}

@@ -22,6 +22,8 @@ https://templatemo.com/tm-584-pod-talk
   --p-color:                      #717275;
   --border-color:                 #7fffd4;
   --link-hover-color:             #0066CC;
+  --custom-btn-cancel-color:      #CC6600;
+  --custom-btn-can-hover-color:   #F41733;
 
   --body-font-family:             'Montserrat', sans-serif;
   --title-font-family:            'Sono', sans-serif;
@@ -170,7 +172,7 @@ strong {
 }
 
 .section-padding {
-  padding-top: 100px;
+  padding-top: 0px;
   padding-bottom: 100px;
 }
 
@@ -958,6 +960,25 @@ main {
 
 .form-floating>label {
   padding-left: 20px;
+}
+
+
+.custom-form-cancel {
+  background: var(--custom-btn-cancel-color);
+  border: none;
+  border-radius: var(--border-radius-large);
+  color: var(--white-color);
+  font-family: var(--title-font-family);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-semibold);
+  transition: all 0.3s;
+  margin-bottom: 0;
+}
+
+.custom-form-cancel:hover,
+.custom-form-cancel:focus {
+  background: var(--custom-btn-can-hover-color);
+  border-color: transparent;
 }
 
 .custom-form button[type="submit"] {
