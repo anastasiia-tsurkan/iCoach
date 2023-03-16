@@ -32,10 +32,11 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="{% url 'sport_academy:teams-list' %}" id="navbarLightDropdownMenuLink" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">Teams</a>
+          <a class="nav-link dropdown-toggle" href="" id="navbarLightDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">Club structure</a>
 
           <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+            <li><a class="dropdown-item active" href="{% url 'sport_academy:teams-list' %}">Teams</a></li>
             <li><a class="dropdown-item active" href="{% url 'sport_academy:coaches-list' %}">Coaches</a></li>
             <li><a class="dropdown-item active" href="{% url 'sport_academy:players-list' %}">Players</a></li>
           </ul>
@@ -44,12 +45,17 @@
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact</a>
         </li>
-        <li><a class="nav-link" href="detail-page.html">Login</a></li>
+        {% if user.is_authenticated %}
+          <li class="nav-item"><a href="{{ user.get_absolute_url }}" class="nav-link">{{ user.get_username }}</a></li>
+          <div class="ms-4">
+            <a href="{% url 'logout'%}?next={{request.path}}" class="btn custom-btn custom-border-btn smoothscroll">Log out</a>
+          </div>
+        {% else %}
+          <div class="ms-4">
+            <a href="{% url 'login' %}?next={{request.path}}" class="btn custom-btn custom-border-btn smoothscroll">Log in</a>
+          </div>
+        {% endif %}
       </ul>
-
-      <div class="ms-4">
-        <a href="#section_2" class="btn custom-btn custom-border-btn smoothscroll">Get started</a>
-      </div>
     </div>
   </div>
 </nav>

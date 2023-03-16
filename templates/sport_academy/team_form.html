@@ -1,10 +1,24 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create new" }} team</h1>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-  </form>
+  <header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-12 col-12 text-center">
+
+          <h2 class="mb-0">{{ object|yesno:"Update,Create new" }} team</h2>
+        </div>
+
+      </div>
+    </div>
+  </header>
+  <div class="col-lg-8 col-12 mx-auto">
+    <form action="" method="post" class="custom-form contact-form" novalidate>
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" value="Save" class="custom-form">Save</button>
+    </form>
+  </div>
 {% endblock %}

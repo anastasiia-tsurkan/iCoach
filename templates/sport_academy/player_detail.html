@@ -2,12 +2,36 @@
 {% load static %}
 
 {% block content %}
+  <header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+      <div class="row">
 
-  <h1>{{ player.first_name }} {{ player.last_name }}</h1>
-  <a href="{% url 'sport_academy:player-update' pk=player.id %}">Update</a>
-  <a href="{% url 'sport_academy:player-delete' pk=player.id %}">Delete</a>
+        <div class="col-lg-12 col-12 text-center">
 
-  <p>Position: {{ player.position }}</p>
-  <p>Birth date: {{ player.birth_date }}</p>
-  <p>Nationality: {{ player.nationality }} </p>
+          <h2 class="mb-0">{{ player.first_name }} {{ player.last_name }}</h2>
+        </div>
+
+      </div>
+    </div>
+  </header>
+  <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+    <div class="custom-block d-flex">
+      <div class="">
+        <div class="custom-block-icon-wrap">
+
+            <a href="{% url 'sport_academy:player-detail' pk=player.id %}" class="custom-block-image-wrap">
+              <img src="{% static player.picture_url  %}"
+                class="custom-block-image img-fluid" alt="">
+            </a>
+          </div>
+          <a href="{% url 'sport_academy:player-update' pk=player.id %}" class="me-1"><strong>Update</strong></a>
+          <a href="{% url 'sport_academy:player-delete' pk=player.id %}" class="me-1"><strong>Delete</strong></a>
+
+        <p class="mb-0"><strong>Position:</strong> {{ player.position }}</p>
+          <p class="mb-0"><strong>Birth date:</strong> {{ player.birth_date }}</p>
+          <p class="mb-0"><strong>Nationality:</strong> {{ player.nationality }} </p>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

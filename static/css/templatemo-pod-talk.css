@@ -480,7 +480,7 @@ main {
 .hero-section {
   background-image: url('../images/templatemo-wave-banner.jpg'), linear-gradient(#348CD2, #FFFFFF);
   background-repeat: no-repeat;
-  background-size: 108% 76%;
+  background-size: 108% 60%;
   background-position: top;
   padding-top: 200px;
 }
@@ -525,11 +525,12 @@ main {
 .owl-carousel-info {
   background-color: var(--section-bg-color);
   box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
-  position: static;
+  position: absolute;
   bottom: 0;
   right: 0;
   left: 0;
-  padding: 20px;
+  height: 150px!important;
+  padding: 30px;
 }
 
 .badge {
@@ -1029,9 +1030,9 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  margin-top: -80px;
   padding-top: 100px;
-  padding-bottom: 150px;
+  padding-bottom: 100px;
+  margin-top: -20px;
 }
 
 .site-footer > .container {
@@ -1132,7 +1133,7 @@ main {
 
 @media screen and (min-width: 1600px) {
   .site-footer {
-    padding-top: 250px;
+    padding-top: 200px;
   }
 }
 
@@ -1174,7 +1175,7 @@ main {
 	}
 
   .section-padding {
-    padding-top: 50px;
+    padding-top: 0px;
     padding-bottom: 50px;
   }
 
@@ -1216,7 +1217,7 @@ main {
   }
 
   .site-footer {
-    margin-top: -200px;
+    margin-top: -150px;
     padding-top: 200px;
     padding-bottom: 100px;
   }
