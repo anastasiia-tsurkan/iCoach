@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinValueValidator
 from django.db import models
 
 
@@ -37,6 +38,8 @@ class Team(models.Model):
 
 
 class Coach(AbstractUser):
+    MIN_BIRTH_DATE = date(1950, 1, 1)
+
     team = models.ManyToManyField(
         Team,
         blank=True,
@@ -44,7 +47,9 @@ class Coach(AbstractUser):
     )
     position = models.CharField(max_length=67, null=True)
     picture_url = models.CharField(max_length=255, default="/images/coaches/avatar.png")
-    birth_date = models.DateField(default=date(1980, 1, 1))
+    birth_date = models.DateField(
+        validators=[MinValueValidator(MIN_BIRTH_DATE)]
+    )
 
     class Meta:
         verbose_name = "coach"
@@ -64,6 +69,9 @@ class Coach(AbstractUser):
 
 class Position(models.Model):
     position_name = models.CharField(max_length=67)
+
+    class Meta:
+        ordering = ["position_name"]
 
     def __str__(self):
         return self.position_name
@@ -86,6 +94,9 @@ class Player(models.Model):
         related_name="players"
     )
     picture_url = models.CharField(max_length=255, default="/images/players/avatar.png")
+
+    class Meta:
+        ordering = ["position", "first_name"]
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.position.position_name})"

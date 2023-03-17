@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from sport_academy.forms import PlayerSearchForm
+from sport_academy.forms import PlayerSearchForm, PlayerForm
 from sport_academy.models import Club, Coach, Player, Team
 
 
@@ -84,13 +84,13 @@ class PlayerDetailView(LoginRequiredMixin, generic.DetailView):
 
 class PlayerCreateView(LoginRequiredMixin, generic.CreateView):
     model = Player
-    fields = "__all__"
+    form_class = PlayerForm
     success_url = reverse_lazy("sport_academy:players-list")
 
 
 class PlayerUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Player
-    fields = "__all__"
+    form_class = PlayerForm
     success_url = reverse_lazy("sport_academy:players-list")
 
 

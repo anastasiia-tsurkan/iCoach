@@ -54,7 +54,7 @@
                       {% if coach.team.all %}
                         {% for team_ in coach.team.all %}
                           <a href="#" class="me-1">
-                            <span>{{ team_ }}</span>
+                            <span><a href="{% url 'sport_academy:team-detail' pk=team_.id %}">{{ team_ }}</a></span>
                           </a>
                         {% endfor %}
                         {% else %}
