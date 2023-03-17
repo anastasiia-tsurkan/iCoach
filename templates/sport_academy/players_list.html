@@ -1,8 +1,15 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 {% load static %}
 
 {% block content %}
-  <header class="site-header d-flex flex-column justify-content-center align-items-center">
+  <header class="site-header d-flex flex-column justify-content-center align-items-center" style="padding-top: 10px">
+    <form action="" method="get" class="custom-form search-form me-3 custom_search_form">
+      {{ search_form|crispy }}
+      <button type="submit" class="form-control" id="submit">
+        <i class="bi-search"></i>
+      </button>
+    </form>
     <div class="container">
       <div class="row">
 

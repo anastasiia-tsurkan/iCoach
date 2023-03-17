@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ club.name }} {{ club.city }}</h1>
+  <header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+      <div class="row">
 
-  <p>Main stadium: {{ club.main_stadium }}</p>
-  <p>Teams:</p>
+        <div class="col-lg-12 col-12 text-center">
+
+          <h2 class="mb-0">{{ club }}</h2>
+        </div>
+
+      </div>
+    </div>
+  </header>
+  <p class="mb-2"><strong>Main stadium:</strong>  {{ club.main_stadium }}</p>
+  <p class="mb-2"><strong>Teams:</strong></p>
   {% for team in club.teams.all %}
-    <p>{{ team.name }} team</p>
+    <a href="{% url 'sport_academy:team-detail' pk=team.id %}" class="mb-0"><strong>{{ team.name }} team</strong></a>
+    <br>
   {% endfor %}
 
 

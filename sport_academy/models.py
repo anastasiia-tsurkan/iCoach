@@ -40,7 +40,7 @@ class Coach(AbstractUser):
     team = models.ManyToManyField(
         Team,
         blank=True,
-        related_name="teams"
+        related_name="coaches"
     )
     position = models.CharField(max_length=67, null=True)
     picture_url = models.CharField(max_length=255, default="/images/coaches/avatar.png")

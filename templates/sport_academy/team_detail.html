@@ -1,26 +1,49 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ team.club.name }} {{ team.name }} team</h1>
-  <a href="{% url 'sport_academy:team-update' pk=team.id %}">Update</a>
-  <a href="{% url 'sport_academy:team-delete' pk=team.id %}">Delete</a>
+  <header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+      <div class="row">
 
-  <p>Coaches:
-    <table>
-      <tr>
-        <th>Full name</th>
-        <th>Position</th>
-      </tr>
-      {% for coach in team.coaches.all %}
+        <div class="col-lg-12 col-12 text-center">
+
+          <h2 class="mb-0">{{ team.club.name }} {{ team.name }} team</h2>
+        </div>
+
+      </div>
+    </div>
+  </header>
+  <h5 class="mb-2">
+    <a href="{% url 'sport_academy:team-update' pk=team.id %}" class="">
+      Update
+    </a>
+    <a href="{% url 'sport_academy:team-delete' pk=team.id %}" class="">
+      Delete
+    </a>
+  </h5>
+  {% if team.coaches.all %}
+    <p class="mb-2">
+      <strong>Coaches:</strong>
+    </p>
+      <table class="table">
         <tr>
-          <td>{{ coach.first_name }} {{ coach.last_name }}</td>
-          <td>{{ coach.position }}</td>
+          <th>Full name</th>
+          <th>Position</th>
         </tr>
-      {% endfor %}
-    </table>
+        {% for coach in team.coaches.all %}
+          <tr>
+            <td><a href="{% url 'sport_academy:coaches-list' %}">{{ coach.first_name }} {{ coach.last_name }}</a></td>
+            <td>{{ coach.position }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+  {% else %}
+    <p class="mb-2"><strong>No added coaches yet</strong></p>
+  {% endif %}
 
-  <p>Status: {{ team.status }}</p>
-  <p>League: {{ team.league }}</p>
-  <p>Season: {{ team.season }}</p>
-  <p>Number of players: </p>
+
+  <p class="mb-2"><strong>Status: {{ team.status }}</strong></p>
+  <p class="mb-2"><strong>League: {{ team.league }}</strong></p>
+  <p class="mb-2"><strong>Season: {{ team.season }}</strong></p>
+  <p class="mb-2"><strong>Number of players: <a href="{% url 'sport_academy:players-list' %}">{{ team.num_of_players }}</a></strong></p>
 {% endblock %}

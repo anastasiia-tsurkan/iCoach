@@ -1,8 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import QuerySet
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from sport_academy.forms import PlayerSearchForm
 from sport_academy.models import Club, Coach, Player, Team
 
 
@@ -56,6 +58,24 @@ class PlayersListView(LoginRequiredMixin, generic.ListView):
     template_name = "sport_academy/players_list.html"
     paginate_by = 6
     queryset = Player.objects.select_related("team")
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(
+            PlayersListView, self
+        ).get_context_data(**kwargs)
+
+        player_last_name = self.request.GET.get("last_name",)
+        context["search_form"] = PlayerSearchForm(
+            initial={"last_name": player_last_name}
+        )
+        return context
+
+    def get_queryset(self) -> QuerySet:
+        player_last_name = self.request.GET.get("last_name")
+
+        if player_last_name:
+            return self.queryset.filter(last_name__icontains=player_last_name)
+        return self.queryset
 
 
 class PlayerDetailView(LoginRequiredMixin, generic.DetailView):

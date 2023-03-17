@@ -19,6 +19,7 @@
       {% csrf_token %}
       {{ form|crispy }}
       <button type="submit" value="Save" class="custom-form">Save</button>
+      <button value="Cancel" onclick="history.back()" class="btn-outline-danger custom-form-cancel">Cancel</button>
     </form>
   </div>
 {% endblock %}
