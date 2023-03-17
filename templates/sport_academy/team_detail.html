@@ -40,6 +40,15 @@
   {% else %}
     <p class="mb-2"><strong>No added coaches yet</strong></p>
   {% endif %}
+  {% if team in user.team.all %}
+    <a href="{% url 'sport_academy:toggle_coach_team_assign' pk=team.id %}">
+      Delete from this team
+    </a>
+  {% else %}
+    <a href="{% url 'sport_academy:toggle_coach_team_assign' pk=team.id %}">
+      Assign me as a coach to this team
+    </a>
+  {% endif %}
 
 
   <p class="mb-2"><strong>Status: {{ team.status }}</strong></p>

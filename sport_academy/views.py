@@ -1,5 +1,7 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import QuerySet
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -126,3 +128,18 @@ class ClubListView(LoginRequiredMixin, generic.ListView):
 
 class ClubDetailView(LoginRequiredMixin, generic.DetailView):
     model = Club
+
+
+"""Additional functions"""
+
+
+@login_required
+def toggle_coach_assign_to_team(request, pk) -> HttpResponseRedirect:
+    coach = Coach.objects.get(id=request.user.id)
+    if (
+        Team.objects.get(id=pk) in coach.team.all()
+    ):
+        coach.team.remove(pk)
+    else:
+        coach.team.add(pk)
+    return HttpResponseRedirect(reverse_lazy("sport_academy:team-detail", args=[pk]))
