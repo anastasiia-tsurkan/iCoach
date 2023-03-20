@@ -108,7 +108,7 @@ class CoachListView(LoginRequiredMixin, generic.ListView):
     model = Coach
     context_object_name = "coaches_list"
     template_name = "sport_academy/coaches_list.html"
-    paginate_by = 5
+    paginate_by = 6
     queryset = Coach.objects.prefetch_related("team")
 
 

@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
 from django.db import models
 
@@ -37,6 +38,12 @@ class Team(models.Model):
         return self.players.count()
 
 
+def validate_birth_date(value):
+    if value.birth_date > date(1950, 1, 1):
+        return value
+    raise ValidationError("Birth date error")
+
+
 class Coach(AbstractUser):
     MIN_BIRTH_DATE = date(1950, 1, 1)
 
@@ -48,7 +55,11 @@ class Coach(AbstractUser):
     position = models.CharField(max_length=67, null=True)
     picture_url = models.CharField(max_length=255, default="/images/coaches/avatar.png")
     birth_date = models.DateField(
-        validators=[MinValueValidator(MIN_BIRTH_DATE)]
+        MinValueValidator(
+            MIN_BIRTH_DATE,
+            message="Birth date shouldn't be earlier than 1 Jan, 1950"
+        ),
+        default=date(1980, 1, 1)
     )
 
     class Meta:

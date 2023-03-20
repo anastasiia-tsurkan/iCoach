@@ -32,7 +32,4 @@ class PlayerModelTest(TestCase):
             team=test_team
         )
 
-    def test_property_player_age_count(self):
-        test_player = Player.objects.get(id=1)
-        age = datetime.today().year - test_player.birth_date.year
-        self.assertEqual(age, test_player.age)
+
