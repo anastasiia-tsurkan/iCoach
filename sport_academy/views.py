@@ -19,15 +19,15 @@ def index(request):
     )
 
 
+"""Team views"""
+
+
 class TeamListView(LoginRequiredMixin, generic.ListView):
     model = Team
     context_object_name = "teams_list"
     template_name = "sport_academy/teams_list.html"
     paginate_by = 5
     queryset = Team.objects.select_related("club")
-
-
-"""Player views"""
 
 
 class TeamCreateView(LoginRequiredMixin, generic.CreateView):

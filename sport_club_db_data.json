@@ -1,0 +1,387 @@
+[
+  {
+    "model": "sport_academy.club",
+    "pk": 1,
+    "fields": {
+      "name": "Liverpool",
+      "country": "England",
+      "city": "Liverpool",
+      "main_stadium": "Anfield"
+    }
+  },
+  {
+    "model": "sport_academy.club",
+    "pk": 2,
+    "fields": {
+      "name": "Manchester City",
+      "country": "England",
+      "city": "Manchester",
+      "main_stadium": "Etihad Stadium"
+    }
+  },
+  {
+    "model": "sport_academy.club",
+    "pk": 3,
+    "fields": {
+      "name": "Manchester United",
+      "country": "England",
+      "city": "Manchester",
+      "main_stadium": "Old Trafford"
+    }
+  },
+  {
+    "model": "sport_academy.club",
+    "pk": 4,
+    "fields": {
+      "name": "Real Madrid",
+      "country": "Spain",
+      "city": "Madrid",
+      "main_stadium": "Santiago Bernabéu"
+    }
+  },
+  {
+    "model": "sport_academy.club",
+    "pk": 5,
+    "fields": {
+      "name": "Roma",
+      "country": "Italia",
+      "city": "Rome",
+      "main_stadium": "Stadio Olimpico"
+    }
+  },
+  {
+    "model": "sport_academy.club",
+    "pk": 6,
+    "fields": {
+      "name": "Chelsea",
+      "country": "England",
+      "city": "Fulham",
+      "main_stadium": "Stamford Bridge"
+    }
+  },
+  {
+    "model": "sport_academy.team",
+    "pk": 1,
+    "fields": {
+      "name": "First",
+      "status": "Adult",
+      "league": "Premier",
+      "season": "2022/23",
+      "club": 1
+    }
+  },
+  {
+    "model": "sport_academy.team",
+    "pk": 2,
+    "fields": {
+      "name": "First",
+      "status": "Adult",
+      "league": "Premier",
+      "season": "2022/23",
+      "club": 2
+    }
+  },
+  {
+    "model": "sport_academy.team",
+    "pk": 3,
+    "fields": {
+      "name": "First",
+      "status": "Adult",
+      "league": "Premier",
+      "season": "2022/23",
+      "club": 3
+    }
+  },
+  {
+    "model": "sport_academy.team",
+    "pk": 4,
+    "fields": {
+      "name": "First",
+      "status": "Adult",
+      "league": "La Liga",
+      "season": "2022/23",
+      "club": 4
+    }
+  },
+  {
+    "model": "sport_academy.team",
+    "pk": 5,
+    "fields": {
+      "name": "First",
+      "status": "Adult",
+      "league": "Seria A",
+      "season": "2022/23",
+      "club": 5
+    }
+  },
+  {
+    "model": "sport_academy.team",
+    "pk": 6,
+    "fields": {
+      "name": "First",
+      "status": "Adult",
+      "league": "Premier",
+      "season": "2022/23",
+      "club": 6
+    }
+  },
+  {
+    "model": "sport_academy.coach",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$73Z1Y57bcosc",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "j.klopp",
+      "first_name": "Jurgen",
+      "last_name": "Klopp",
+      "email": "j.klopp@coach.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T14:17:04Z",
+      "position": "manager",
+      "team": [1],
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sport_academy.coach",
+    "pk": 2,
+    "fields": {
+      "password": "bpkdf2_sha256$320000$73Z1Y57bcosc",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "p.guardiola",
+      "first_name": "Pep",
+      "last_name": "Guardiola",
+      "email": "p.guardiola@coach.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T14:17:04Z",
+      "position": "manager",
+      "team": [2],
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sport_academy.coach",
+    "pk": 3,
+    "fields": {
+      "password": "fghdf2_sha256$320000$73Z1Y57bcosc",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "a.ferguson",
+      "first_name": "Alex",
+      "last_name": "Ferguson",
+      "email": "a.ferguson@coach.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-10-08T14:17:04Z",
+      "position": "manager",
+      "team": [3],
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sport_academy.coach",
+    "pk": 4,
+    "fields": {
+      "password": "kjhf2_sha256$320000$73Z1Y57bcosc",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "c.ancelotti",
+      "first_name": "Carlo",
+      "last_name": "Ancelotti",
+      "email": "c.ancelotti@coach.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-01-18T14:17:04Z",
+      "position": "manager",
+      "team": [4],
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sport_academy.coach",
+    "pk": 5,
+    "fields": {
+      "password": "tyui2_sha256$320000$73Z1Y57bcosc",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "j.mourinho",
+      "first_name": "Jose",
+      "last_name": "Mourinho",
+      "email": "j.mourinho@coach.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-03-08T14:17:04Z",
+      "position": "manager",
+      "team": [5],
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sport_academy.coach",
+    "pk": 6,
+    "fields": {
+      "password": "bnm2_sha256$320000$73Z1Y57bcosc",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "t.tuchel",
+      "first_name": "Thomas",
+      "last_name": "Tuchel",
+      "email": "t.tuchel@coach.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-08T14:17:04Z",
+      "position": "manager",
+      "team": [6],
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sport_academy.coach",
+    "pk": 7,
+    "fields": {
+      "password": "kjhf2_sha256$320000$73Z1Y57bcosc",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "z.zidane",
+      "first_name": "Zinedine",
+      "last_name": "Zidane",
+      "email": "z.zidane@coach.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-01-08T14:17:04Z",
+      "position": "manager",
+      "team": [4],
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sport_academy.position",
+    "pk": 1,
+    "fields": {
+      "position_name": "goalkeeper"
+    }
+  },
+  {
+    "model": "sport_academy.position",
+    "pk": 2,
+    "fields": {
+      "position_name": "defender"
+    }
+  },
+  {
+    "model": "sport_academy.position",
+    "pk": 3,
+    "fields": {
+      "position_name": "midfielder"
+    }
+  },
+  {
+    "model": "sport_academy.position",
+    "pk": 4,
+    "fields": {
+      "position_name": "forward"
+    }
+  },
+  {
+    "model": "sport_academy.player",
+    "pk": 1,
+    "fields": {
+      "first_name": "Mohamed",
+      "last_name": "Salah",
+      "birth_date": "1992-06-15",
+      "position": 4,
+      "number": 11,
+      "nationality": "Egyptian",
+      "team": 1
+    }
+  },
+  {
+    "model": "sport_academy.player",
+    "pk": 2,
+    "fields": {
+      "first_name": "Kevin",
+      "last_name": "De Bruyne",
+      "birth_date": "1991-06-28",
+      "position": 3,
+      "number": 17,
+      "nationality": "Belgian",
+      "team": 2
+    }
+  },
+  {
+    "model": "sport_academy.player",
+    "pk": 3,
+    "fields": {
+      "first_name": "Christian",
+      "last_name": "Eriksen",
+      "birth_date": "1992-02-14",
+      "position": 3,
+      "number": 14,
+      "nationality": "Danish",
+      "team": 3
+    }
+  },
+  {
+    "model": "sport_academy.player",
+    "pk": 4,
+    "fields": {
+      "first_name": "Andriy",
+      "last_name": "Lunin",
+      "birth_date": "1999-02-11",
+      "position": 1,
+      "number": 13,
+      "nationality": "Ukrainian",
+      "team": 4
+    }
+  },
+  {
+    "model": "sport_academy.player",
+    "pk": 5,
+    "fields": {
+      "first_name": "Karim",
+      "last_name": "Benzema",
+      "birth_date": "1987-12-19",
+      "position": 4,
+      "number": 9,
+      "nationality": "French",
+      "team": 4
+    }
+  },
+  {
+    "model": "sport_academy.player",
+    "pk": 6,
+    "fields": {
+      "first_name": "Leonardo",
+      "last_name": "Spinazzola",
+      "birth_date": "1993-03-25",
+      "position": 2,
+      "number": 37,
+      "nationality": "Italian",
+      "team": 5
+    }
+  },
+  {
+    "model": "sport_academy.player",
+    "pk": 7,
+    "fields": {
+      "first_name": "Mykhailo",
+      "last_name": "Mudryk",
+      "birth_date": "2001-01-05",
+      "position": 3,
+      "number": 15,
+      "nationality": "Ukrainian",
+      "team": 6
+    }
+  }
+]

@@ -20,7 +20,7 @@ class Club(models.Model):
 
 
 class Team(models.Model):
-    name = models.CharField(max_length=67, unique=True)
+    name = models.CharField(max_length=67)
     status = models.CharField(max_length=67)
     league = models.CharField(max_length=67)
     season = models.CharField(max_length=67)
