@@ -1,6 +1,4 @@
 from datetime import date
-
-from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 from sport_academy.models import Player, Team, Club, Coach, Position

@@ -130,6 +130,12 @@ class ClubDetailView(LoginRequiredMixin, generic.DetailView):
     model = Club
 
 
+class ClubCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Club
+    fields = "__all__"
+    success_url = reverse_lazy("sport_academy:clubs-list")
+
+
 """Additional functions"""
 
 

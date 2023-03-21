@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-from sport_academy.models import Club, Player, Coach
+from sport_academy.models import Club, Player
 
 COACH_LIST_URL = reverse("sport_academy:coaches-list")
 TEAM_LIST_URL = reverse("sport_academy:teams-list")

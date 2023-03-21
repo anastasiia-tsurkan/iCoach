@@ -25,9 +25,6 @@
           </ul>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
         {% if user.is_authenticated %}
           <li class="nav-item"><a href="{{ user.get_absolute_url }}" class="nav-link">{{ user.get_username }}</a></li>
           <div class="ms-4">

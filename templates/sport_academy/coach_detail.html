@@ -18,6 +18,4 @@
   {% for team in coach.team.all %}
     <p class="mb-2"><strong><a href="{% url 'sport_academy:team-detail' pk=team.id %}">{{ team }}</a></strong></p>
   {% endfor %}
-
-
 {% endblock %}

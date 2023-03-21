@@ -8,14 +8,16 @@
 
         <div class="col-lg-12 col-12 text-center">
 
-          <h2 class="mb-0">{{ object|yesno:"Update,Create new" }} team</h2>
+          <h2 class="mb-0">{{ object|yesno:"Update,Create your" }} club profile</h2>
         </div>
 
       </div>
     </div>
   </header>
+
   <div class="col-lg-8 col-12 mx-auto">
-    <form action="" method="post" class="custom-form contact-form" novalidate>
+
+    <form action="" method="post" class="custom-form contact-form" role="form">
       {% csrf_token %}
       {{ form|crispy }}
       <button type="submit" value="Save" class="custom-form">Save</button>
