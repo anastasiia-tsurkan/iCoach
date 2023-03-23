@@ -54,7 +54,8 @@ class ModelsTests(TestCase):
 
     def test_property_player_age_count(self):
         test_player = Player.objects.get(id=1)
-        age = date.today().year - test_player.birth_date.year - (test_player.birth_date >= date.today())
+        age = (date.today().year - test_player.birth_date.year -
+               (test_player.birth_date >= date.today()))
         self.assertEqual(age, test_player.age)
 
     """Club model test"""
@@ -77,5 +78,6 @@ class ModelsTests(TestCase):
 
     def test_property_coach_age_count(self):
         coach_ = Coach.objects.get(id=1)
-        age = date.today().year - coach_.birth_date.year - (coach_.birth_date >= date.today())
+        age = (date.today().year - coach_.birth_date.year -
+               (coach_.birth_date >= date.today()))
         self.assertEqual(age, coach_.age)

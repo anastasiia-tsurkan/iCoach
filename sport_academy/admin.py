@@ -47,7 +47,14 @@ class TeamAdmin(admin.ModelAdmin):
 
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name", "birth_date", "position", "nationality", "team")
+    list_display = (
+        "first_name",
+        "last_name",
+        "birth_date",
+        "position",
+        "nationality",
+        "team"
+    )
     search_fields = ("first_name", "last_name")
 
 

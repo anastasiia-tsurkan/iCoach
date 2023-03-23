@@ -53,7 +53,10 @@ class Coach(AbstractUser):
         related_name="coaches"
     )
     position = models.CharField(max_length=67, null=True)
-    picture_url = models.CharField(max_length=255, default="/images/coaches/avatar.png")
+    picture_url = models.CharField(
+        max_length=255,
+        default="/images/coaches/avatar.png"
+    )
     birth_date = models.DateField(
         MinValueValidator(
             MIN_BIRTH_DATE,
@@ -73,7 +76,8 @@ class Coach(AbstractUser):
     def age(self):
         today = date.today()
         age = today.year - self.birth_date.year - (
-                (today.month, today.day) < (self.birth_date.month, self.birth_date.day)
+                (today.month, today.day) <
+                (self.birth_date.month, self.birth_date.day)
         )
         return age
 
@@ -104,18 +108,22 @@ class Player(models.Model):
         on_delete=models.CASCADE,
         related_name="players"
     )
-    picture_url = models.CharField(max_length=255, default="/images/players/avatar.png")
+    picture_url = models.CharField(
+        max_length=255,
+        default="/images/players/avatar.png"
+    )
 
     class Meta:
         ordering = ["position", "first_name"]
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} ({self.position.position_name})"
+        return f"{self.first_name} {self.last_name} " \
+               f"({self.position.position_name})"
 
     @property
     def age(self):
         today = date.today()
-        age = today.year - self.birth_date.year - (
-                (today.month, today.day) < (self.birth_date.month, self.birth_date.day)
-        )
+        age = (today.year - self.birth_date.year -
+               ((today.month, today.day) <
+                (self.birth_date.month, self.birth_date.day)))
         return age

@@ -148,4 +148,6 @@ def toggle_coach_assign_to_team(request, pk) -> HttpResponseRedirect:
         coach.team.remove(pk)
     else:
         coach.team.add(pk)
-    return HttpResponseRedirect(reverse_lazy("sport_academy:team-detail", args=[pk]))
+    return HttpResponseRedirect(
+        reverse_lazy("sport_academy:team-detail", args=[pk])
+    )
