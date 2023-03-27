@@ -15,7 +15,7 @@
     </div>
   </header>
   <div class="col-lg-8 col-12 mx-auto">
-    <form action="" method="post" class="custom-form contact-form" novalidate>
+    <form action="" method="post" class="custom-form contact-form">
       {% csrf_token %}
       {{ form|crispy }}
       <button type="submit" value="Save" class="custom-form">Save</button>
