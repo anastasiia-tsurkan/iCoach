@@ -30,7 +30,7 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
     # 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ["127.0.0.1", "https://icoach.onrender.com"]
+ALLOWED_HOSTS = ["icoach.onrender.com", "127.0.0.1"]
 
 INTERNAL_IPS = [
     "127.0.0.1",
