@@ -20,7 +20,7 @@
         <div class="custom-block-icon-wrap">
 
             <a href="{% url 'sport_academy:player-detail' pk=player.id %}" class="custom-block-image-wrap">
-              <img src="{% static player.picture_url  %}"
+              <img src="{{ player.picture.url }}"
                 class="custom-block-image img-fluid" alt="">
             </a>
           </div>
