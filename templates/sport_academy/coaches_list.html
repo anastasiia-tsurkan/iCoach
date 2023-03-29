@@ -28,7 +28,7 @@
 
                       <div class="section-overlay"></div>
                       <a href="{% url 'sport_academy:coach-detail' pk=coach.id %}" class="custom-block-image-wrap">
-                        <img src="{% static coach.picture_url  %}"
+                        <img src="{{ coach.picture.url }}"
                           class="custom-block-image img-fluid" alt="">
                       </a>
                     </div>

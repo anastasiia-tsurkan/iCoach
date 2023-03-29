@@ -32,7 +32,8 @@ class CoachAdmin(UserAdmin):
                         "last_name",
                         "team",
                         "position",
-                        "birth_date"
+                        "birth_date",
+                        "picture"
                     )
                 }
             ),
