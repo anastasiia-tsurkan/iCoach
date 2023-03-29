@@ -16,7 +16,7 @@ class CoachAdmin(UserAdmin):
                         "team",
                         "position",
                         "birth_date",
-                        "picture_url"
+                        "picture"
                     )
                 },
             ),

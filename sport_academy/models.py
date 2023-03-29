@@ -53,9 +53,13 @@ class Coach(AbstractUser):
         related_name="coaches"
     )
     position = models.CharField(max_length=67, null=True)
-    picture_url = models.CharField(
-        max_length=255,
-        default="/images/coaches/avatar.png"
+    # picture_url = models.CharField(
+    #     max_length=255,
+    #     default="/images/coaches/avatar.png"
+    # )
+    picture = models.ImageField(
+        upload_to="static/images/coaches/",
+        default="static/images/coaches/avatar.png"
     )
     birth_date = models.DateField(
         MinValueValidator(
