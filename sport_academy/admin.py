@@ -54,7 +54,8 @@ class PlayerAdmin(admin.ModelAdmin):
         "birth_date",
         "position",
         "nationality",
-        "team"
+        "team",
+        "picture"
     )
     search_fields = ("first_name", "last_name")
 

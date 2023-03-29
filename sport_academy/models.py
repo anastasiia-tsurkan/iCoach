@@ -108,9 +108,9 @@ class Player(models.Model):
         on_delete=models.CASCADE,
         related_name="players"
     )
-    picture_url = models.CharField(
-        max_length=255,
-        default="/images/players/avatar.png"
+    picture = models.ImageField(
+        upload_to="players/",
+        default="players/avatar.png"
     )
 
     class Meta:
