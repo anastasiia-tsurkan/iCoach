@@ -1,7 +1,5 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import QuerySet
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -66,7 +64,7 @@ class PlayersListView(LoginRequiredMixin, generic.ListView):
             PlayersListView, self
         ).get_context_data(**kwargs)
 
-        player_last_name = self.request.GET.get("last_name",)
+        player_last_name = self.request.GET.get("last_name", )
         context["search_form"] = PlayerSearchForm(
             initial={"last_name": player_last_name}
         )
@@ -139,15 +137,16 @@ class ClubCreateView(LoginRequiredMixin, generic.CreateView):
 """Additional functions"""
 
 
-@login_required
-def toggle_coach_assign_to_team(request, pk) -> HttpResponseRedirect:
-    coach = Coach.objects.get(id=request.user.id)
-    if (
-        Team.objects.get(id=pk) in coach.team.all()
-    ):
-        coach.team.remove(pk)
-    else:
-        coach.team.add(pk)
-    return HttpResponseRedirect(
-        reverse_lazy("sport_academy:team-detail", args=[pk])
-    )
+class AssignCoachToTeam(LoginRequiredMixin, generic.DetailView):
+    model = Team
+
+    def get_object(self):
+        team = super().get_object()
+        coach = Coach.objects.get(id=self.request.user.id)
+        if (
+                team in coach.team.all()
+        ):
+            coach.team.remove(team)
+        else:
+            coach.team.add(team)
+        return team

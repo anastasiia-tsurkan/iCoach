@@ -7,7 +7,6 @@ from sport_academy.views import (
     TeamCreateView,
     TeamUpdateView,
     TeamDeleteView,
-    toggle_coach_assign_to_team,
     PlayersListView,
     PlayerDetailView,
     PlayerCreateView,
@@ -17,7 +16,8 @@ from sport_academy.views import (
     CoachDetailView,
     ClubListView,
     ClubDetailView,
-    ClubCreateView
+    ClubCreateView,
+    AssignCoachToTeam
 )
 
 urlpatterns = [
@@ -34,11 +34,6 @@ urlpatterns = [
         "team/<int:pk>/delete/",
         TeamDeleteView.as_view(),
         name="team-delete"
-    ),
-    path(
-        "team/<int:pk>/toggle_assign/",
-        toggle_coach_assign_to_team,
-        name="toggle_coach_team_assign"
     ),
     path("players/", PlayersListView.as_view(), name="players-list"),
     path("player/<int:pk>/", PlayerDetailView.as_view(), name="player-detail"),
@@ -57,7 +52,12 @@ urlpatterns = [
     path("coach/<int:pk>/", CoachDetailView.as_view(), name="coach-detail"),
     path("clubs/", ClubListView.as_view(), name="clubs-list"),
     path("club/<int:pk>/", ClubDetailView.as_view(), name="club-detail"),
-    path("club/create/", ClubCreateView.as_view(), name="club-create")
+    path("club/create/", ClubCreateView.as_view(), name="club-create"),
+    path(
+        "team/<int:pk>/assign/",
+        AssignCoachToTeam.as_view(),
+        name="toggle_coach_team_assign"
+    )
 ]
 
 app_name = "sport_academy"
