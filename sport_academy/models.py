@@ -7,10 +7,10 @@ from django.db import models
 
 
 class Club(models.Model):
-    name = models.CharField(max_length=67, unique=True)
-    country = models.CharField(max_length=67)
-    city = models.CharField(max_length=67)
-    main_stadium = models.CharField(max_length=67)
+    name = models.CharField(max_length=255, unique=True)
+    country = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    main_stadium = models.CharField(max_length=255)
 
     class Meta:
         ordering = ["name"]
@@ -20,10 +20,10 @@ class Club(models.Model):
 
 
 class Team(models.Model):
-    name = models.CharField(max_length=67)
-    status = models.CharField(max_length=67)
-    league = models.CharField(max_length=67)
-    season = models.CharField(max_length=67)
+    name = models.CharField(max_length=255)
+    status = models.CharField(max_length=255)
+    league = models.CharField(max_length=255)
+    season = models.CharField(max_length=255)
     club = models.ForeignKey(
         Club,
         related_name="teams",
@@ -38,12 +38,6 @@ class Team(models.Model):
         return self.players.count()
 
 
-def validate_birth_date(value):
-    if value.birth_date > date(1950, 1, 1):
-        return value
-    raise ValidationError("Birth date error")
-
-
 class Coach(AbstractUser):
     MIN_BIRTH_DATE = date(1950, 1, 1)
 
@@ -52,7 +46,7 @@ class Coach(AbstractUser):
         blank=True,
         related_name="coaches"
     )
-    position = models.CharField(max_length=67, null=True)
+    position = models.CharField(max_length=255, null=True)
     picture = models.ImageField(
         upload_to="coaches/",
         default="coaches/avatar.png"
@@ -83,7 +77,7 @@ class Coach(AbstractUser):
 
 
 class Position(models.Model):
-    position_name = models.CharField(max_length=67)
+    position_name = models.CharField(max_length=255)
 
     class Meta:
         ordering = ["position_name"]
@@ -93,8 +87,8 @@ class Position(models.Model):
 
 
 class Player(models.Model):
-    first_name = models.CharField(max_length=67)
-    last_name = models.CharField(max_length=67)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
     birth_date = models.DateField()
     number = models.IntegerField()
     position = models.ForeignKey(
@@ -102,7 +96,7 @@ class Player(models.Model):
         on_delete=models.CASCADE,
         related_name="players"
     )
-    nationality = models.CharField(max_length=67)
+    nationality = models.CharField(max_length=255)
     team = models.ForeignKey(
         Team,
         on_delete=models.CASCADE,

@@ -8,7 +8,7 @@ from sport_academy.models import Player
 
 class PlayerSearchForm(forms.Form):
     last_name = forms.CharField(
-        max_length=67,
+        max_length=255,
         required=False,
         label="",
         widget=forms.TextInput(attrs={"placeholder": "Search by last name..."})
