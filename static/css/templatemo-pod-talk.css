@@ -982,6 +982,24 @@ main {
   border-color: transparent;
 }
 
+.custom-form-cancel-delete {
+  background: var(--custom-btn-bg-color);
+  border: none;
+  border-radius: var(--border-radius-large);
+  color: var(--white-color);
+  font-family: var(--title-font-family);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-semibold);
+  transition: all 0.3s;
+  margin-bottom: 0;
+}
+
+.custom-form-cancel-delete:hover,
+.custom-form-cancel-delete:focus {
+  background: var(--custom-btn-bg-hover-color);
+  border-color: transparent;
+}
+
 .custom-form button[type="submit"] {
   background: var(--custom-btn-bg-color);
   border: none;
