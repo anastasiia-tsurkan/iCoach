@@ -37,6 +37,20 @@ class TeamCreateView(LoginRequiredMixin, generic.CreateView):
 class TeamDetailView(LoginRequiredMixin, generic.DetailView):
     model = Team
 
+    def post(self, request, **kwargs):
+        team = super().get_object()
+        coach = Coach.objects.get(id=self.request.user.id)
+
+        action = self.request.POST.get("assignment")
+
+        if action == "assign":
+            coach.team.add(team)
+        elif action == "delete":
+            coach.team.remove(team)
+
+        team.save()
+        return render(request, "sport_academy/team_detail.html", {"team": team})
+
 
 class TeamUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Team
@@ -132,21 +146,3 @@ class ClubCreateView(LoginRequiredMixin, generic.CreateView):
     model = Club
     fields = "__all__"
     success_url = reverse_lazy("sport_academy:clubs-list")
-
-
-"""Additional functions"""
-
-
-class AssignCoachToTeam(LoginRequiredMixin, generic.DetailView):
-    model = Team
-
-    def get_object(self):
-        team = super().get_object()
-        coach = Coach.objects.get(id=self.request.user.id)
-        if (
-                team in coach.team.all()
-        ):
-            coach.team.remove(team)
-        else:
-            coach.team.add(team)
-        return team
