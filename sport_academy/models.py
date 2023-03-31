@@ -3,6 +3,7 @@ from datetime import date
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.urls import reverse_lazy
 
 
 class Club(models.Model):
@@ -68,6 +69,9 @@ class Coach(AbstractUser):
     @property
     def age(self):
         return count_age(self.birth_date)
+
+    def get_absolute_url(self):
+        return reverse_lazy('sport_academy:coach-detail', args=[str(self.id)])
 
 
 class Position(models.Model):
