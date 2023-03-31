@@ -1,7 +1,6 @@
 from datetime import date
 
 from django.contrib.auth.models import AbstractUser
-from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
 from django.db import models
 
@@ -41,6 +40,13 @@ class Team(models.Model):
 class Coach(AbstractUser):
     MIN_BIRTH_DATE = date(1950, 1, 1)
 
+    birth_date = models.DateField(
+        MinValueValidator(
+            MIN_BIRTH_DATE,
+            message="Birth date shouldn't be earlier than 1 Jan, 1950"
+        ),
+        default=date(1980, 1, 1)
+    )
     team = models.ManyToManyField(
         Team,
         blank=True,
@@ -50,13 +56,6 @@ class Coach(AbstractUser):
     picture = models.ImageField(
         upload_to="coaches/",
         default="coaches/avatar.png"
-    )
-    birth_date = models.DateField(
-        MinValueValidator(
-            MIN_BIRTH_DATE,
-            message="Birth date shouldn't be earlier than 1 Jan, 1950"
-        ),
-        default=date(1980, 1, 1)
     )
 
     class Meta:
@@ -68,12 +67,7 @@ class Coach(AbstractUser):
 
     @property
     def age(self):
-        today = date.today()
-        age = today.year - self.birth_date.year - (
-                (today.month, today.day) <
-                (self.birth_date.month, self.birth_date.day)
-        )
-        return age
+        return count_age(self.birth_date)
 
 
 class Position(models.Model):
@@ -116,8 +110,12 @@ class Player(models.Model):
 
     @property
     def age(self):
-        today = date.today()
-        age = (today.year - self.birth_date.year -
-               ((today.month, today.day) <
-                (self.birth_date.month, self.birth_date.day)))
-        return age
+        return count_age(self.birth_date)
+
+
+def count_age(birth_date):
+    today = date.today()
+    age = (today.year - birth_date.year -
+           ((today.month, today.day) <
+            (birth_date.month, birth_date.day)))
+    return age
