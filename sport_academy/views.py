@@ -41,12 +41,10 @@ class TeamDetailView(LoginRequiredMixin, generic.DetailView):
         team = super().get_object()
         coach = Coach.objects.get(id=self.request.user.id)
 
-        action = self.request.POST.get("assignment")
-
-        if action == "assign":
-            coach.team.add(team)
-        elif action == "delete":
+        if team in coach.team.all():
             coach.team.remove(team)
+        else:
+            coach.team.add(team)
 
         team.save()
         return render(request, "sport_academy/team_detail.html", {"team": team})
