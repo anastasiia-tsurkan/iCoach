@@ -28,7 +28,6 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
-# 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ["icoach.onrender.com", "127.0.0.1"]
 
@@ -89,14 +88,24 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ["DATABASE_URL"],
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ["DATABASE_URL"],
+#         conn_max_age=600,
+#         conn_health_checks=True,
+#     )
+# }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test_login',
+        'USER': 'postgres',
+        'PASSWORD': '1qazcde3',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
