@@ -1,0 +1,68 @@
+{%  extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <section class="hero-section">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-12 col-12">
+          <div class="text-center mb-5 pb-2">
+            <h1 class="text-white">iCoach</h1>
+
+            <p class="text-white">Best professional manager of your sport club</p>
+
+            <a href="{% url 'sport_academy:club-create' %}" class="btn custom-btn smoothscroll mt-3">Register your club</a>
+          </div>
+
+          <div class="owl-carousel owl-theme">
+            <div class="owl-carousel-info-wrap item">
+              <img src="{% static 'images/profile/boots_and_ball_static.jpg' %}"
+                class="owl-carousel-image img-fluid" alt="">
+
+              <div class="owl-carousel-info">
+                <h4 class="mb-2">
+                  <a href="{% url 'sport_academy:clubs-list' %}">Your sport club</a>
+                </h4>
+
+                <span class="badge">For coaches</span>
+
+                <span class="badge">For managers</span>
+              </div>
+            </div>
+
+            <div class="owl-carousel-info-wrap item">
+              <img src="{% static 'images/profile/womans_team.jpg' %}"
+                class="owl-carousel-image img-fluid" alt="">
+
+              <div class="owl-carousel-info">
+                <h4 class="mb-2">
+                  <a href="{% url 'sport_academy:teams-list' %}">Teams</a>
+                </h4>
+
+                <span class="badge">Plan trainings</span>
+
+                <span class="badge">Analyse games</span>
+              </div>
+            </div>
+
+            <div class="owl-carousel-info-wrap item">
+              <img src="{% static 'images/profile/tree_players_in_red.jpg' %}"
+                class="owl-carousel-image img-fluid" alt="">
+
+              <div class="owl-carousel-info">
+                <h4 class="mb-2">
+                  <a href="{% url 'sport_academy:players-list' %}">Players</a>
+                </h4>
+
+                <span class="badge">Professional<br>information</span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

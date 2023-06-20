@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-12 col-12 text-center">
+
+          <h2 class="mb-0">Teams</h2>
+        </div>
+
+      </div>
+    </div>
+  </header>
+  <div class="col-lg-12 col-12">
+    <div class="section-title-wrap mb-5">
+      <h4 class="section-title">
+        <a href="{% url 'sport_academy:team-create' %}">Add team</a>
+      </h4>
+    </div>
+  </div>
+   {% if teams_list %}
+      <table class="table">
+        <tr>
+          <th>Id</th>
+          <th>Club</th>
+          <th>Name</th>
+          <th>Season</th>
+          <th>League</th>
+          <th>Number of players</th>
+        </tr>
+        {% for team in teams_list %}
+          <tr>
+            <td>
+              {{ team.id }}
+            </td>
+            <td>
+              <a href="">{{ team.club.name }}</a>
+            </td>
+            <td>
+              <a href="{% url 'sport_academy:team-detail' pk=team.id %}">{{ team.name }}</a>
+            </td>
+            <td>
+              {{ team.season }}
+            </td>
+            <td>
+              {{ team.league }}
+            </td>
+            <td style="text-align: center">
+              {{ team.num_of_players }}
+            </td>
+          </tr>
+
+        {% endfor %}
+
+      </table>
+   {% else %}
+     <p>There are no teams yet</p>
+   {% endif %}
+{% endblock %}
